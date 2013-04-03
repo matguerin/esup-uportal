@@ -242,8 +242,8 @@
 
         <property name="resultAttributeMapping">
             <map>
-                <entry key="eduPersonPrimaryAffiliation">    <value>eduPersonPrimaryAffiliation</value></entry>                
-                <entry key="eduPersonAffiliation">            <value>eduPersonAffiliation</value></entry>                
+                <entry key="eduPersonPrimaryAffiliation">   <value>eduPersonPrimaryAffiliation</value></entry>                
+                <entry key="eduPersonAffiliation">          <value>eduPersonAffiliation</value></entry>                
                 <entry key="cn">                            <value>cn</value></entry>
                 <entry key="description">                   <value>description</value></entry>
                 <entry key="displayName">                   <value>displayName</value></entry>
@@ -267,6 +267,13 @@
                 <entry key="supannaffectation">             <value>supannaffectation</value></entry>
                 <entry key="objectclass">                   <value>objectclass</value></entry>
                 <entry key="supannorganisme">               <value>supannorganisme</value></entry>
+                
+                <entry key="eduPersonPrincipalName">        <value>eduPersonPrincipalName</value></entry>  
+                <entry key="supannAffectation">   			<value>supannAffectation</value></entry>
+				<entry key="supannCivilite">   				<value>supannCivilite</value></entry>
+				<entry key="ou">   							<value>ou</value></entry>
+				<entry key="radiusTunnelPrivateGroupId">    <value>vlan</value></entry>
+				<entry key="title">         				<value>title</value></entry>
             </map>
         </property>
     </bean>
