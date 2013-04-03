@@ -1,0 +1,7 @@
+/* "Open iFrame in new window link" */
+.up .up-portlet-wrapper .up-portlet-titlebar .openIframe .icon {
+background-position: -160px 0px;
+}
+.up .up-portlet-wrapper .up-portlet-titlebar .openIframe:hover .icon, .up .up-portlet-wrapper .up-portlet-titlebar .openIframe:focus .icon {
+  background-position: -160px -16px;
+}

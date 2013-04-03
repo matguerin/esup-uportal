@@ -48,9 +48,11 @@
 
   <!-- Support for legacy uPortal css classes. -->
   <css>legacy.css</css>
+  <css>custom.css</css>
     
   <!-- Optional overrides specific to IE6.  This file needs to be created if you want IE6 specific CSS. -->
   <css conditional="if IE 6">ie6.css</css>
   
   <js import="true">../common/common_skin.xml</js>
+  <js>custom.js</js>
 </resources>
