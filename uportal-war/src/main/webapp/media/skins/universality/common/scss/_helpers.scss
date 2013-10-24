@@ -76,18 +76,22 @@
 
 // Easy 2-color, linear gradient stack. Pass in the colors.
 @mixin gradient($color1, $color2) {
-	background-image	: -moz-linear-gradient(top, $color1, $color2);
-	background-image	: -webkit-gradient(linear, left top, left bottom, color-stop(0, $color1), color-stop(1, $color2));
-	-ms-filter			: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$color1}', EndColorStr='#{$color2}')";
-	background-image	: linear-gradient(top, $color1, $color2);
+	@if ($color1 != false) {
+	    background-image	: -moz-linear-gradient(top, $color1, $color2);
+	    background-image	: -webkit-gradient(linear, left top, left bottom, color-stop(0, $color1), color-stop(1, $color2));
+	    -ms-filter			: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$color1}', EndColorStr='#{$color2}')";
+	    background-image	: linear-gradient(top, $color1, $color2);
+	}
 }
 
 // 3-color, hard-edge gradient stack. Pass in the colors.
 @mixin gradient2($color1, $color2, $color3) {
-	background-image	: -moz-linear-gradient(top, $color1, $color2, $color2 50%, $color3 0%);
-    background-image	: -webkit-gradient(linear, left top, left bottom, from($color1), to($color2), color-stop(.5,$color2) ,color-stop(.5,$color3));
-    -ms-filter			: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$color1}', EndColorStr='#{$color3}')";
-    background-image	: linear-gradient(top, $color1, $color2, $color2 50%, $color3 0%);
+	@if ($color1 != false) {
+	    background-image	: -moz-linear-gradient(top, $color1, $color2, $color2 50%, $color3 0%);
+        background-image	: -webkit-gradient(linear, left top, left bottom, from($color1), to($color2), color-stop(.5,$color2) ,color-stop(.5,$color3));
+        -ms-filter			: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$color1}', EndColorStr='#{$color3}')";
+        background-image	: linear-gradient(top, $color1, $color2, $color2 50%, $color3 0%);
+    }
 }
 
 // Easy way to add rounded corners. Pass in the desired size of the corner radius.
@@ -117,7 +121,9 @@
 // Easy way to add a basic text-shadow. Will default to a bottom shadow. 
 // Pass in "light" to get a top bevel on dark text/backgrounds.
 @mixin text-shadow($type: dark) {
-	@if($type == 'light') {
+	@if($type == false) {
+	    text-shadow	: none;
+	} @else if($type == 'light') {
 		text-shadow	: 0 1px 1px rgba($white,.8);	
 	} @else {
 		text-shadow	: 0 -1px 1px rgba($black,.7);	

@@ -174,6 +174,7 @@
   -->
 	<xsl:param name="USER_LANG">fr</xsl:param> <!-- Sets the default user language. -->
 
+
   <!-- ****** PORTAL SETTINGS ****** -->
   <!--
    | YELLOW
@@ -233,9 +234,9 @@
    | Institution Settings can be used to change intitution-specific parts of the theme.
    | Refer to localization notes above for changing text and labels used in the theme.
   -->
-  <xsl:variable name="HELP_URL">http://www.jasig.org/uportal</xsl:variable>
-  <xsl:variable name="LOGIN_HELP_URL">http://www.jasig.org/uportal</xsl:variable>
-  <xsl:variable name="CAS_NEW_USER_URL">http://www.jasig.org/cas</xsl:variable>
+  <xsl:variable name="HELP_URL">http://services-numeriques.univ-larochelle.fr/Les-services-numeriques</xsl:variable>
+  <xsl:variable name="LOGIN_HELP_URL">http://services-numeriques.univ-larochelle.fr</xsl:variable>
+  <xsl:variable name="CAS_NEW_USER_URL">http://services-numeriques.univ-larochelle.fr</xsl:variable>
 
 
 
@@ -414,6 +415,9 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="header.guest.block">
+    <!-- Portal Page Bar -->
+    <xsl:call-template name="portal.guest.page.bar"/>
+
   	<!-- Skip Navigation -->
     <xsl:call-template name="skip.nav"/>
 
@@ -421,7 +425,7 @@
     <xsl:call-template name="logo"/>
 
     <!-- Login -->
-  	<xsl:call-template name="login"/>
+    <!-- <xsl:call-template name="login"/> -->
   </xsl:template>
   <!-- ================================================== -->
 
@@ -843,7 +847,8 @@
     <!-- Login -->
 
     <!-- Login Channel -->
-    <xsl:call-template name="login"/>
+    <!--
+    <xsl:call-template name="login"/> -->
     <!-- Login Channel -->
 
     <!-- CAS Login
@@ -943,61 +948,39 @@
     </div>
 
     <xsl:if test="$INSTITUTION='uportal' or $INSTITUTION='coal' or $INSTITUTION='ivy' or $INSTITUTION='hc'">
-			<div id="portalPageFooterContent">
-      <!-- Footer Links -->
+      <div id="portalPageFooterContent">
+        <!-- Footer Links -->
       	<div id="portalPageFooterLinks">
-	        <a href="http://www.jasig.org/" target="_blank" title="{upMsg:getMessage('go.to.jasig.site', $USER_LANG)}">
-	          <xsl:value-of select="upMsg:getMessage('jasig.org', $USER_LANG)"/>
-	          <!--<xsl:value-of select="jasig.org"/>-->
-	        </a>
-	        <xsl:call-template name="portal.pipe"/>
-	        <a href="http://www.jasig.org/uportal" target="_blank" title="{upMsg:getMessage('go.to.uportal.site', $USER_LANG)}">
-	          <xsl:value-of select="upMsg:getMessage('uportal.org', $USER_LANG)"/>
-	          <!--<xsl:value-of select="uportal.org"/>-->
-	        </a>
-	        <xsl:call-template name="portal.pipe"/>
-	        <a href="http://www.jasig.org/uportal/download" target="_blank" title="{upMsg:getMessage('go.to.uportal.download.site', $USER_LANG)}">
-	          <xsl:value-of select="upMsg:getMessage('download.uportal', $USER_LANG)"/>
-	        </a>
-	        <xsl:call-template name="portal.pipe"/>
-	        <a href="http://www.jasig.org/uportal/community" target="_blank" title="{upMsg:getMessage('go.to.uportal.community.page', $USER_LANG)}">
-	          <xsl:value-of select="upMsg:getMessage('uportal.community', $USER_LANG)"/>
-	        </a>
-	        <xsl:call-template name="portal.pipe"/>
-	        <a href="http://www.jasig.org/uportal/privacy" target="_blank" title="{upMsg:getMessage('view.uportal.privacy.policy', $USER_LANG)}">
-	          <xsl:value-of select="upMsg:getMessage('privacy.policy', $USER_LANG)"/>
-	        </a>
-	        <xsl:call-template name="portal.pipe"/>
-	        <a href="http://www.jasig.org/uportal/accessibility" target="_blank" title="{upMsg:getMessage('view.uportal.accessibility.information', $USER_LANG)}">
-	          <xsl:value-of select="upMsg:getMessage('uportal.accessibility', $USER_LANG)"/>
-	        </a>
-	      </div>
+          <a title="Site de l'Université de La Rochelle" target="_blank" href="http://www.univ-larochelle.fr/">Université de La Rochelle</a>
+          <xsl:call-template name="portal.pipe"/>
+          <a title="Site de l'Université de Poitiers" target="_blank" href="http://www.univ-poitiers.fr/">Université de Poitiers</a>
+          <xsl:call-template name="portal.pipe"/>
+          <a title="Site de l'Université de Limoges" target="_blank" href="http://www.unilim.fr/">Université de Limoges</a>
+          <xsl:call-template name="portal.pipe"/>
+          <a title="Site de l'ENSMA" target="_blank" href="http://www.ensma.fr/">ENSMA</a>
+          <xsl:call-template name="portal.pipe"/>
+          <a title="Site de l'ENSCI" target="_blank" href="http://www.ensci.fr/">ENSCI</a>
+      </div>
 
-	      <!-- uPortal Product Version -->
-	      <div id="portalProductAndVersion">
-	        <p>
-                <a href="http://www.jasig.org/uportal" title="{upMsg:getMessage('footer.uportal.powered.by', $USER_LANG)} {$UP_VERSION}" target="_blank"><xsl:value-of select="upMsg:getMessage('footer.uportal.powered.by', $USER_LANG)"/><xsl:value-of select="$UP_VERSION"/></a><xsl:value-of select="upMsg:getMessage('footer.open.source', $USER_LANG)"/><a href="http://www.jasig.org" title="Jasig.org - Open for Higher Education">Jasig</a> - <span><xsl:value-of select="$SERVER_NAME"/></span>
-                <xsl:if test="$AUTHENTICATED='true'">
-                    <br/>
-                    <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
-                    <span><xsl:value-of select="upMsg:getMessage('footer.session.key', $USER_LANG)"/></span><span><xsl:value-of select="$STATS_SESSION_ID"/></span>
-                    <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
-                </xsl:if>
-            </p>
-	        <!-- It's a good idea to leave this in the markup, that way anyone who may be supporting your portal can get to this information quickly by simply using a browser.  If you don't want the statement to visibly render in the page, use CSS to make it invisible. -->
-	      </div>
-
-	      <!-- Copyright -->
-	      <div id="portalCopyright">
-	        <p><a href="http://www.jasig.org/uportal/about/license" title="uPortal" target="_blank">uPortal </a><xsl:value-of select="upMsg:getMessage('footer.uportal.licensed', $USER_LANG)"/><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0" target="_blank">Apache License, Version 2.0 </a> <xsl:value-of select="upMsg:getMessage('footer.license.approvment', $USER_LANG)"/><a href="http://www.opensource.org/docs/osd" title="{upMsg:getMessage('footer.osi', $USER_LANG)}" target="_blank"><xsl:value-of select="upMsg:getMessage('footer.osi', $USER_LANG)"/> </a><xsl:value-of select="upMsg:getMessage('footer.open.license', $USER_LANG)"/><a href="http://www.gnu.org/licenses/license-list.html" title="{upMsg:getMessage('footer.gnu', $USER_LANG)}" target="_blank"><xsl:value-of select="upMsg:getMessage('footer.gnu', $USER_LANG)"/> </a><xsl:value-of select="upMsg:getMessage('footer.free.license', $USER_LANG)"/></p>
-	      </div>
-
-	      <!-- Icon Set Attribution -->
-	      <div id="silkIconsAttribution">
-	        <p><a href="http://www.famfamfam.com/lab/icons/silk/" title="{upMsg:getMessage('footer.icon.set', $USER_LANG)}" target="_blank"><xsl:value-of select="upMsg:getMessage('footer.icon.set', $USER_LANG)"/> </a><xsl:value-of select="upMsg:getMessage('footer.icon.set.author', $USER_LANG)"/></p>
-	        <!-- Silk icon set 1.3 by Mark James [ http://www.famfamfam.com/lab/icons/silk/ ], which is licensed under a Creative Commons Attribution 2.5 License. [ http://creativecommons.org/licenses/by/2.5/ ].  This icon set is free for use under the CCA 2.5 license, so long as there is a link back to the author's site.  If the Silk icons are used, this reference must be present in the markup, though not necessarily visible in the rendered page.  If you don't want the statement to visibly render in the page, use CSS to make it invisible. -->
-	      </div>
-    	</div>
+      <!-- uPortal Product Version -->
+      <div id="portalProductAndVersion">
+	    <p>
+          <a href="http://www.jasig.org/uportal" title="{upMsg:getMessage('footer.uportal.powered.by', $USER_LANG)} {$UP_VERSION}" target="_blank">
+            <xsl:value-of select="upMsg:getMessage('footer.uportal.powered.by', $USER_LANG)"/>
+            <xsl:value-of select="$UP_VERSION"/>
+          </a>
+          <xsl:value-of select="upMsg:getMessage('footer.open.source', $USER_LANG)"/>
+          <a href="http://www.jasig.org" title="Jasig.org - Open for Higher Education">Jasig</a>
+        </p>
+        <!-- It's a good idea to leave this in the markup, that way anyone who may be supporting your portal can get to this information quickly by simply using a browser.  If you don't want the statement to visibly render in the page, use CSS to make it invisible. -->
+      </div>
+      <!-- Copyright -->
+      <div id="portalCopyright">
+        <div>
+          <a title="Site du PRES LPC" target="_blank" href="http://www.pres-lpc.fr/">PRES Limousin Poitou-Charentes</a>
+          <p>15 rue de l’Hôtel Dieu <br/> 86034 Poitiers</p>
+        </div>
+      </div>
     </xsl:if>
 
   </xsl:template>

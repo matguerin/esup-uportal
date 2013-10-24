@@ -120,6 +120,23 @@
   </xsl:template>
   <!-- =============================================== -->
 
+  <!-- ========== TEMPLATE: PORTAL PAGE BAR (GUEST) ========== -->
+  <!-- ======================================================= -->
+  <!--
+   | This template renders the portal page bar.
+  -->
+  <xsl:template name="portal.guest.page.bar">
+    <div id="portalPageBar">
+      <div id="portalPageBarLinks">
+        <ul class="utilities">
+	      <xsl:call-template name="portal.page.bar.link.login"/>
+	    </ul>
+      </div>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
+    </div>
+  </xsl:template>
+  <!-- =============================================== -->
+
 
   <!-- ========== TEMPLATE: PORTAL PAGE BAR TITLE ========== -->
   <!-- ===================================================== -->
@@ -251,6 +268,20 @@
   </xsl:template>
   <!-- ========================================================= -->
 
+  <!-- ========== TEMPLATE: PORTAL PAGE BAR LINK LOGIN ========== -->
+  <!-- ========================================================= -->
+  <!--
+   | This template renders the logout link into the portal page bar.
+  -->
+  <xsl:template name="portal.page.bar.link.login">
+    <li class="link-login">
+      <a href="{$EXTERNAL_LOGIN_URL}" title="{upMsg:getMessage('sign.in.via.cas', $USER_LANG)}">
+        <span><xsl:value-of select="upMsg:getMessage('sign.in', $USER_LANG)"/></span>
+      </a>
+    </li>
+  </xsl:template>
+  <!-- ========================================================= -->
+
 
   <!-- ========== TEMPLATE: LOGO ========== -->
   <!-- ==================================== -->
@@ -332,11 +363,11 @@
       <a id="portalCASLoginLink" class="button" href="{$EXTERNAL_LOGIN_URL}" title="{upMsg:getMessage('sign.in.via.cas', $USER_LANG)}">
         <span><xsl:value-of select="upMsg:getMessage('sign.in', $USER_LANG)"/><!--&#160;<span class="via-cas"><xsl:value-of select="upMsg:getMessage('with.cas', $USER_LANG)"/></span>--></span>
       </a>
-      <p><xsl:value-of select="upMsg:getMessage('new.user.question', $USER_LANG)"/>&#160;
+      <!--<p><xsl:value-of select="upMsg:getMessage('new.user.question', $USER_LANG)"/>&#160;
         <a id="portalCASLoginNewLink" href="{$CAS_NEW_USER_URL}" title="{upMsg:getMessage('create.new.portal.account', $USER_LANG)}">
           <xsl:value-of select="upMsg:getMessage('new.user', $USER_LANG)"/>
         </a>.
-      </p>
+      </p>-->
     </div>
   </xsl:template>
   <!-- ========================================= -->
@@ -485,12 +516,15 @@
       </a>
     </li>
   </xsl:template>
+  <!-- =============================================== -->
+
   <!-- ========================================== -->
 
   <!-- ========== TEMPLATE: dlm.sidebar.links ========== -->
   <!-- ========================================== -->
   <!--
-   | This template renders the sidebar links component pushed from dlm, list of links to high priority portlets regardless of the portlet's placement within the layout.
+   | This template renders the sidebar links component pushed from dlm, list of links to high priority portlets regardless of the por
+let's placement within the layout.
   -->
   <xsl:template name="dlm.sidebar.links">
     <xsl:for-each select="/layout/sidebar/sidebarGroup">

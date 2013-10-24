@@ -1,0 +1,199 @@
+//====================================
+// UPORTAL3 SKIN: Overrides
+//====================================
+// This file is written in SASS. To find out how to install SASS to generate CSS visit http://sass-lang.com
+
+// Put any skin-specific overrides here.
+
+// Specific settings
+
+//PRES LPC Colors
+
+$basicGradient1			        : rgba(250, 253, 253, 1);
+$basicGradient2                 : rgba(225, 241, 241, 1);
+
+$portalPageGradient1			: $basicGradient1;
+$portalPageGradient2			: lighten($basicGradient2, 5%);
+
+$footerGradient1				: $basicGradient1;
+$footerGradient2				: $basicGradient2;
+
+html {
+	background-color: $portalGradient2;
+}
+
+.up {
+  
+  form {
+     input[type="text"], textarea {
+	   font-family: inherit;
+	   font-size: 90%;
+     }
+  }
+  
+  #portalPageBody {
+  	@include gradient($portalPageGradient1,$portalPageGradient2);
+	
+    #portalPageBodyInner {
+	  background: transparent;
+    }
+	
+	.up-portlet-wrapper .up-portlet-titlebar {
+	  .openIframe .icon {
+        background-position: -160px 0;
+      }
+    
+      .openIframe:hover .icon,
+      .openIframe:focus .icon {
+        background-position: -160px -16px;
+	  }
+    }
+  }
+  
+  #portalPageHeader {
+    #portalLogin #portalCASLogin a.button {
+  	  display: inline-block;
+    }
+  	
+    #portalPageBar #portalPageBarLinks {
+      
+      .link-login a, 
+      .link-logout a {
+  	    font-weight: bold;
+  	    background: url("images/page-bar-power.png") no-repeat left center transparent;
+ 	    padding-left: 20px !important;
+  	  }
+  	  .link-login a:hover,
+  	  .link-logout a:hover {
+  	    background-image: url("images/page-bar-power-hover.png");
+  	  }
+  	  li:last-child,
+  	  li:last-child a {
+  	  	padding-right: 0;	
+  	  }
+  	}
+  }
+  
+  
+  #portalNavigation {
+  
+    .fl-inlineEdit-edit {
+      background-color: $c5lighter;
+      border-color: $c5lightest;
+      font-weight: normal;
+    }
+  
+    li.portal-navigation-add-item {
+      margin: 0;
+      padding-right: 15px;	
+      a {
+        font-weight: normal;         
+      }
+    
+    }
+    .portal-flyout-container {
+    	li a {
+		  padding: 0.4em 1.5em;
+		  font-weight: normal;
+		}
+	}
+  }
+  
+  .up-gallery {
+  	.handle a {
+  	  background: url("images/gallery-settings-icon.png") no-repeat scroll 2px center $graylightest;
+  	  top: 1px;
+  	  margin-left: 15px;
+  	  border-radius: 0 0;
+  	  height: 25px;
+  	  width: auto;
+  	  	span {
+  	  		margin-right: 5px;
+  	  		padding: 8px 15px 8px 30px;
+  	  	}
+  	}
+  }
+  
+  #portalPageBodyCustomizeMessageRow {
+  	padding-top: 14px;
+  }
+  
+  #portalPageFooter {
+	
+	#portalPageFooterNav {
+	  padding: 5px 15px;
+	  border-top: 8px solid $graylighter;
+	  background-color: $footerGradient2;
+	  @include gradient($footerGradient1,$footerGradient2);
+	  min-height: 220px;                   //"Hack" in order to not have any "grey" border at the end of the page
+	  
+	  .fl-container-flex {
+	    margin: 10px auto;
+	  }
+	  ul {
+        padding-top: 2px;
+      }
+      div > a:link {
+      	color: $footerLink;
+      }
+      div > a:visited {
+      	color: $footerLink;
+	  }
+      div > a:hover {
+      	color: $footerLinkHover;
+      }
+	}
+	#portalPageFooterContent {
+		background: url("images/portal_footer_bkd.jpg") no-repeat scroll 0 bottom $footerGradient1;
+		padding: 1px 15px 5px;
+		min-height: 245px;
+				
+		#portalProductAndVersion {
+			display: none;
+		}
+		
+		
+		#portalPageFooterLinks {
+			text-align: left;
+			margin-top: 30px;
+			
+			a {
+				font-weight: normal;
+			}
+			p {
+				margin-bottom: 0.6em;
+				font-weight: bold;
+			}
+		}
+		#portalCopyright {
+			a {
+				background: url("images/portal_poweredby.png") no-repeat scroll right bottom transparent;
+				padding: 22px 150px 30px 0;
+			}
+			a:hover {
+				color: $white;
+			}
+			div {
+				text-align: right;
+				padding-top : 125px;
+			}
+			p {
+				padding-right: 150px;
+			}
+		}
+	}
+  }
+
+  // tips area
+  #portalContentTopBlock .up-portlet-wrapper {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: 10px;
+  }
+
+  // alerts area
+  #portalHeaderBlock {
+    background: $headerBlockBackground;
+  }
+}

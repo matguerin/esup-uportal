@@ -21,6 +21,15 @@
 -->
 
 <skins>
+    
+    <skin>
+        <skin-key>preslpc</skin-key>
+        <skin-name>PRES LPC</skin-name>
+        <skin-description>
+            Aux couleurs du PRES Limousin Poitou-Charentes.
+        </skin-description>
+    </skin>
+    
     <skin>
         <skin-key>uportal3</skin-key>
         <skin-name>uPortal 4</skin-name>

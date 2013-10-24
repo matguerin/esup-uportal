@@ -21,7 +21,7 @@
 
 // Specific styling for button Up state. Styling is contextual, by the type passed in.
 @mixin button-up($type) {
-  display: inline;
+  //display: inline;
   margin: 0;
   padding: $buttonPadding;
   border-width: $buttonBorderWidth;

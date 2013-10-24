@@ -274,7 +274,7 @@ var up = up || {};
             galleryList: ".portlet-list"
         },
         pageSize: 6,
-        defaultIconUrl: "/ResourceServingWebapp/rs/tango/0.8.90/32x32/categories/applications-other.png"
+        defaultIconUrl: "/media/skins/universality/common/images/gallery-apps_icon_default.png"
     });
 
     up.BrowseContentPane = function (container, overallThat, options) {

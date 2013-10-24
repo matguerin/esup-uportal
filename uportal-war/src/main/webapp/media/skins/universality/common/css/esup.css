@@ -17,7 +17,7 @@
 #portalNavigation .portal-flyout-container:lang(fr) {
     display: none;
     position: absolute;
-    width: 240px;
+    width: 265px;
     z-index: 100000;
 }
 
