@@ -976,7 +976,7 @@
         <!-- Copyright -->
         <div id="portalCopyright">
           <div>
-            <a title="Site du PRES LPC" target="_blank" href="http://www.pres-lpc.fr/">PRES Limousin Poitou-Charentes</a>
+            <a title="Site de la CUE LPC" target="_blank" href="http://www.pres-lpc.fr/">CUE Limousin Poitou-Charentes</a>
             <p>15 rue de l’Hôtel Dieu <br/> 86034 Poitiers</p>
           </div>
         </div>
